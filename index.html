@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Vladimir-code</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?_v=20230727205711">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20230727205711">
+	<link rel="shortcut icon" href="img/header/logo.svg" type="image/svg+xml">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="yandex-verification" content="3861ad693ded03e3">
+	<!-- preloader-style -->
+	<style>
+		#preloader-site {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(14, 15, 26, 0.973);
+			z-index: 1001;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.loading-preloader {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			font-weight: 600;
+			letter-spacing: 2px;
+			font-size: 30px;
+			color: #00ffdd;
+			opacity: 999;
+			z-index: 1000;
+		}
+
+		.icon-preloader {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 270px;
+			height: 270px;
+			border: 13px solid #00d9ff;
+			border-top: transparent;
+			border-left-color: transparent;
+			border-radius: 50%;
+			z-index: 1;
+			transform: translate(-50%, -50%);
+			animation: iconpreloader 0.9s linear infinite;
+		}
+
+		@keyframes iconpreloader {
+			0% {
+				transform: translate(-50%, -50%) rotate(0deg);
+			}
+
+			100% {
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="preloader-site">
+		<div class="loading-preloader">Загрузка...</div>
+		<div class="icon-preloader"></div>
+	</div>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__row">
+					<a href="https://vladimir-code.ru/" class="header__logo">
+						<img src="img/logo.svg" alt="logo">
+					</a>
+					<nav class="header__menu menu">
+						<ul class="menu__items">
+							<li class="menu__item">
+								<a href="#scroll-skills" class="menu__link">
+									<svg display="none">
+										<symbol id="menu-skills" viewBox="0 0 30 30">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M24.3777 15C24.3777 15.425 24.3402 15.825 24.2902 16.225L26.9277 18.2875C27.1652 18.475 27.2277 18.8125 27.0777 19.0875L24.5777 23.4125C24.4652 23.6125 24.2527 23.725 24.0402 23.725C23.9652 23.725 23.8902 23.7125 23.8152 23.6875L20.7027 22.4375C20.0527 22.925 19.3527 23.35 18.5902 23.6625L18.1152 26.975C18.0777 27.275 17.8152 27.5 17.5027 27.5H12.5027C12.1902 27.5 11.9277 27.275 11.8902 26.975L11.4152 23.6625C10.6527 23.35 9.95273 22.9375 9.30273 22.4375L6.19023 23.6875C6.12773 23.7125 6.05273 23.725 5.97773 23.725C5.75273 23.725 5.54023 23.6125 5.42773 23.4125L2.92773 19.0875C2.77773 18.8125 2.84023 18.475 3.07773 18.2875L5.71523 16.225C5.66523 15.825 5.62773 15.4125 5.62773 15C5.62773 14.5875 5.66523 14.175 5.71523 13.775L3.07773 11.7125C2.84023 11.525 2.76523 11.1875 2.92773 10.9125L5.42773 6.5875C5.54023 6.3875 5.75273 6.275 5.96523 6.275C6.04023 6.275 6.11523 6.2875 6.19023 6.3125L9.30273 7.5625C9.95273 7.075 10.6527 6.65 11.4152 6.3375L11.8902 3.025C11.9277 2.725 12.1902 2.5 12.5027 2.5H17.5027C17.8152 2.5 18.0777 2.725 18.1152 3.025L18.5902 6.3375C19.3527 6.65 20.0527 7.0625 20.7027 7.5625L23.8152 6.3125C23.8777 6.2875 23.9527 6.275 24.0277 6.275C24.2527 6.275 24.4652 6.3875 24.5777 6.5875L27.0777 10.9125C27.2277 11.1875 27.1652 11.525 26.9277 11.7125L24.2902 13.775C24.3402 14.175 24.3777 14.575 24.3777 15ZM21.8777 15C21.8777 14.7375 21.8652 14.475 21.8152 14.0875L21.6402 12.675L22.7527 11.8L24.0902 10.7375L23.2152 9.225L21.6277 9.8625L20.3027 10.4L19.1652 9.525C18.6652 9.15 18.1652 8.8625 17.6277 8.6375L16.3027 8.1L16.1027 6.6875L15.8652 5H14.1277L13.8777 6.6875L13.6777 8.1L12.3527 8.6375C11.8402 8.85 11.3277 9.15 10.7902 9.55L9.66523 10.4L8.36523 9.875L6.77773 9.2375L5.90273 10.75L7.25273 11.8L8.36523 12.675L8.19023 14.0875C8.15273 14.4625 8.12773 14.75 8.12773 15C8.12773 15.25 8.15273 15.5375 8.19023 15.925L8.36523 17.3375L7.25273 18.2125L5.90273 19.2625L6.77773 20.775L8.36523 20.1375L9.69023 19.6L10.8277 20.475C11.3277 20.85 11.8277 21.1375 12.3652 21.3625L13.6902 21.9L13.8902 23.3125L14.1277 25H15.8777L16.1277 23.3125L16.3277 21.9L17.6527 21.3625C18.1652 21.15 18.6777 20.85 19.2152 20.45L20.3402 19.6L21.6402 20.125L23.2277 20.7625L24.1027 19.25L22.7527 18.2L21.6402 17.325L21.8152 15.9125C21.8527 15.5375 21.8777 15.2625 21.8777 15ZM15.0027 10C12.2402 10 10.0027 12.2375 10.0027 15C10.0027 17.7625 12.2402 20 15.0027 20C17.7652 20 20.0027 17.7625 20.0027 15C20.0027 12.2375 17.7652 10 15.0027 10ZM12.5027 15C12.5027 16.375 13.6277 17.5 15.0027 17.5C16.3777 17.5 17.5027 16.375 17.5027 15C17.5027 13.625 16.3777 12.5 15.0027 12.5C13.6277 12.5 12.5027 13.625 12.5027 15Z" />
+										</symbol>
+									</svg>
+									<svg class="menu-svg-sprite">
+										<use xlink:href="#menu-skills"></use>
+									</svg>
+									<div class="menu__text">Навыки</div>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#scroll-layout" class="menu__link">
+									<svg display="none">
+										<symbol id="menu-stages" viewBox="0 0 30 30">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M18.525 5H23.75C25.125 5 26.25 6.125 26.25 7.5V25C26.25 26.375 25.125 27.5 23.75 27.5H6.25C6.075 27.5 5.9125 27.4875 5.75 27.4625C5.2625 27.3625 4.825 27.1125 4.4875 26.775C4.2625 26.5375 4.075 26.275 3.95 25.975C3.825 25.675 3.75 25.3375 3.75 25V7.5C3.75 7.15 3.825 6.825 3.95 6.5375C4.075 6.2375 4.2625 5.9625 4.4875 5.7375C4.825 5.4 5.2625 5.15 5.75 5.05C5.9125 5.0125 6.075 5 6.25 5H11.475C12 3.55 13.375 2.5 15 2.5C16.625 2.5 18 3.55 18.525 5ZM8.75 12.5V10H21.25V12.5H8.75ZM21.25 17.5V15H8.75V17.5H21.25ZM17.5 20H8.75V22.5H17.5V20ZM15 4.6875C15.5125 4.6875 15.9375 5.1125 15.9375 5.625C15.9375 6.1375 15.5125 6.5625 15 6.5625C14.4875 6.5625 14.0625 6.1375 14.0625 5.625C14.0625 5.1125 14.4875 4.6875 15 4.6875ZM6.25 25H23.75V7.5H6.25V25Z" />
+										</symbol>
+									</svg>
+									<svg class="menu-svg-sprite">
+										<use xlink:href="#menu-stages"></use>
+									</svg>
+									<div class="menu__text">Верстка</div>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#scroll-effects" class="menu__link">
+									<svg display="none">
+										<symbol id="menu-effects" viewBox="0 0 80 80">
+											<path d="M30.6332 30.4333L39.9998 8.33334L49.3665 30.4333L73.3332 32.4667L55.1332 48.2333L60.5998 71.6667L39.9998 59.2333L19.3998 71.6667L24.8665 48.2333L6.6665 32.4667L30.6332 30.4333ZM43.2332 33.0667L39.9998 25.4333L36.7665 33L35.1998 36.7L31.1998 37.0333L22.9665 37.7333L29.2332 43.1667L32.2665 45.8L31.3665 49.7333L29.4998 57.7667L36.5665 53.5L39.9998 51.4333L43.4332 53.5667L50.4998 57.8333L48.6332 49.8L47.7332 45.8667L50.7665 43.2333L57.0332 37.8L48.7998 37.1L44.7998 36.7667L43.2332 33.0667Z" />
+										</symbol>
+									</svg>
+									<svg class="menu-svg-sprite">
+										<use xlink:href="#menu-effects"></use>
+									</svg>
+									<div class="menu__text">Эффекты</div>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#scroll-portfolio" class="menu__link">
+									<svg display="none">
+										<symbol id="menu-portfolio" viewBox="0 0 30 30">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M21.25 8.125H25C26.3875 8.125 27.5 9.2375 27.5 10.625V24.375C27.5 25.7625 26.3875 26.875 25 26.875H5C3.6125 26.875 2.5 25.7625 2.5 24.375V10.625C2.5 9.2375 3.6125 8.125 5 8.125H8.75V5.625C8.75 4.2375 9.8625 3.125 11.25 3.125H18.75C20.1375 3.125 21.25 4.2375 21.25 5.625V8.125ZM18.75 5.625H11.25V8.125H18.75V5.625ZM25 24.375H5V21.875H25V24.375ZM5 18.125H25V10.625H21.25V13.125H18.75V10.625H11.25V13.125H8.75V10.625H5V18.125Z" />
+										</symbol>
+									</svg>
+									<svg class="menu-svg-sprite">
+										<use xlink:href="#menu-portfolio"></use>
+									</svg>
+									<div class="menu__text">Портфолио</div>
+								</a>
+							</li>
+							<li class="menu__item">
+								<a href="#scroll-contacts" class="menu__link">
+									<svg display="none">
+										<symbol id="menu-contacts" viewBox="0 0 30 30">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 3.75H27.5C28.875 3.75 30 4.875 30 6.25L29.9875 23.75C29.9875 25.125 28.875 26.25 27.5 26.25H2.5C1.125 26.25 0 25.125 0 23.75V6.25C0 4.875 1.125 3.75 2.5 3.75ZM2.5 23.75H27.5V6.25H2.5V23.75ZM26.25 7.5H17.5V13.75H26.25V7.5ZM21.875 12.1875L25 10V8.75L21.875 10.9375L18.75 8.75V10L21.875 12.1875ZM11.25 15C13.3125 15 15 13.3125 15 11.25C15 9.1875 13.3125 7.5 11.25 7.5C9.1875 7.5 7.5 9.1875 7.5 11.25C7.5 13.3125 9.1875 15 11.25 15ZM12.5 11.25C12.5 10.5625 11.9375 10 11.25 10C10.5625 10 10 10.5625 10 11.25C10 11.9375 10.5625 12.5 11.25 12.5C11.9375 12.5 12.5 11.9375 12.5 11.25ZM18.75 20.7375C18.75 17.6125 13.7875 16.2625 11.25 16.2625C8.7125 16.2625 3.75 17.6125 3.75 20.7375V22.5H18.75V20.7375ZM11.25 18.75C9.625 18.75 7.775 19.375 6.85 20H15.65C14.7125 19.3625 12.875 18.75 11.25 18.75Z" />
+										</symbol>
+									</svg>
+									<svg class="menu-svg-sprite">
+										<use xlink:href="#menu-contacts"></use>
+									</svg>
+									<div class="menu__text">Контакты</div>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<a href="#scroll-home" class="on-top"></a>
+			<section id="scroll-home" class="home">
+				<div class="home__container">
+					<!-- Оболочка слайдера -->
+					<div class="home__slider">
+						<div class="home__swiper swiper">
+							<!-- Двигающееся часть слайдера -->
+							<div class="home__wrapper swiper-wrapper">
+								<!-- Слайд -->
+								<div class="home__slide swiper-slide">
+									<div class="swiper-slide__row-card-first animation animation-no-hide">
+										<div class="swiper-slide__info">
+											<div class="swiper-slide__name">Меня зовут Владимир</div>
+											<div class="swiper-slide__text">
+												<p>Для меня важно сделать для Вас <span class="swiper-slide__text-color">надежную,
+														кроссбраузерную, современную</span> вёрстку, которая будет работать быстро и
+													адекватно отображаться на любых устройствах. Верстка которая <span class="swiper-slide__text-color">не будет разваливаться</span> при изменении
+													текста, изображений и прочих элементов в блоках.</p>
+											</div>
+											<a href="https://kwork.ru/user/vladimir-code" class="swiper-slide__button button">
+												Хочу сайт
+												<span class="button__border-top"></span>
+												<span class="button__border-bottom"></span>
+												<span class="button__border-left"></span>
+												<span class="button__border-right"></span>
+											</a>
+											<div class="swiper-slide__social social animation">
+												<a href="https://api.whatsapp.com/send/?phone=79506076556&text&type=phone_number&app_absent=0" target="_blank" class="social__item">
+													<img class="social__img" src="img/home/whatsapp.svg" alt="whatsapp">
+													<div class="social__name">WhatsApp</div>
+												</a>
+												<a href="https://t.me/flame152" target="_blank" class="social__item">
+													<img class="social__img" src="img/home/telegram.svg" alt="telegram">
+													<div class="social__name">Telegram</div>
+												</a>
+												<a href="https://viber.click/79506076556" target="_blank" class="social__item">
+													<img class="social__img" src="img/home/viber.svg" alt="viber">
+													<div class="social__name">Viber</div>
+												</a>
+											</div>
+										</div>
+										<div class="swiper-slide__photo">
+											<picture><source srcset="img/home/photo_home.webp" type="image/webp"><img src="img/home/photo_home.png" alt="vladimir_code"></picture>
+											<div class="swiper-slide__job-title">Frontend developer, верстальщик сайтов</div>
+										</div>
+									</div>
+								</div>
+								<div class="home__slide swiper-slide">
+									<div class="swiper-slide__row-card-second animation animation-no-hide">
+										<div class="swiper-slide__content-card-second">
+											<div class="swiper-slide__card">
+												<div class="card-swiper-slide">
+													<div class="card-swiper-slide__icon">
+														<img src="img/home/shield_check_line.svg" alt="shield">
+													</div>
+													<div class="card-swiper-slide__body">
+														<div class="card-swiper-slide__title card-swiper-slide__title_red">
+															<h3>Надёжность верстки</h3>
+														</div>
+														<div class="card-swiper-slide__text">
+															<p>Вы без проблем сможете изменять контент сайта и не важно что это будет
+																текст, изображения или блоки. Структура сайта не развалится.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="swiper-slide__card">
+												<div class="card-swiper-slide">
+													<div class="card-swiper-slide__icon">
+														<img src="img/home/done_all_outlined.svg" alt="shield">
+													</div>
+													<div class="card-swiper-slide__body">
+														<div class="card-swiper-slide__title card-swiper-slide__title_orange">
+															<h3>Гарантия</h3>
+														</div>
+														<div class="card-swiper-slide__text">
+															<p>Я дорожу своей репутацией, по этому на все мои работы распространяется
+																гарантия. Всегда на связи и оперативно внесу правки без какой либо
+																доплаты.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="swiper-slide__card">
+												<div class="card-swiper-slide">
+													<div class="card-swiper-slide__icon">
+														<img src="img/home/bem.svg" alt="shield">
+													</div>
+													<div class="card-swiper-slide__body">
+														<div class="card-swiper-slide__title card-swiper-slide__title_green">
+															<h3>Методология БЭМ</h3>
+														</div>
+														<div class="card-swiper-slide__text">
+															<p>Разделение интерфейса на независимые блоки. Возможность повторно
+																использовать существующий код, избегая лишнего переиспользования.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="swiper-slide__card">
+												<div class="card-swiper-slide">
+													<div class="card-swiper-slide__icon">
+														<img src="img/home/star.svg" alt="shield">
+													</div>
+													<div class="card-swiper-slide__body">
+														<div class="card-swiper-slide__title card-swiper-slide__title_pink">
+															<h3>Анимация</h3>
+														</div>
+														<div class="card-swiper-slide__text">
+															<p>Визуально украсит Ваш сайт и сделает его более привлекательным для
+																пользователя. Одна из самых важных составлющих современного сайта.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="swiper-slide__card">
+												<div class="card-swiper-slide">
+													<div class="card-swiper-slide__icon">
+														<img src="img/home/template_website.svg" alt="shield">
+													</div>
+													<div class="card-swiper-slide__body">
+														<div class="card-swiper-slide__title card-swiper-slide__title_yellow">
+															<h3>Проверка вёрстки</h3>
+														</div>
+														<div class="card-swiper-slide__text">
+															<p>Всегда проверяю верстку на наличие ошибок в HTML, CSS. Так же проверяю
+																скорость загрузки сайта и совместимость со всеми браузерами.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="swiper-slide__card">
+												<div class="card-swiper-slide">
+													<div class="card-swiper-slide__icon">
+														<img src="img/home/chart_positive_dynamic.svg" alt="shield">
+													</div>
+													<div class="card-swiper-slide__body">
+														<div class="card-swiper-slide__title card-swiper-slide__title_turquoise">
+															<h3>Развитие</h3>
+														</div>
+														<div class="card-swiper-slide__text">
+															<p>Я не стою на месте и изучаю новые технологии, что бы совершенствовать
+																свой код и стартовый шаблон, а так же сократить время на вёрстку сайтов.
+															</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Если нужна пагинация -->
+						<div class="swiper-pagination-home"></div>
+					</div>
+				</div>
+			</section>
+
+			<section id="scroll-skills" class="skills">
+				<div class="skills__container">
+					<div class="skills__title title">
+						<h2 class="title__text animation animation-no-hide">Навыки</h2>
+					</div>
+					<div class="skills__row">
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/html.svg" alt="html" loading="lazy">
+								<div class="skills__text">HTML5</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/css.svg" alt="css" loading="lazy">
+								<div class="skills__text">CSS3</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/sass.svg" alt="sass" loading="lazy">
+								<div class="skills__text">SASS</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/js.svg" alt="js" loading="lazy">
+								<div class="skills__text">JS</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/vscode.svg" alt="vs_code" loading="lazy">
+								<div class="skills__text">VS-CODE</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/figma.svg" alt="figma" loading="lazy">
+								<div class="skills__text">FIGMA</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/gulp.svg" alt="gulp" loading="lazy">
+								<div class="skills__text">GULP</div>
+							</div>
+						</div>
+						<div class="skills__card">
+							<div class="skills__body">
+								<div class="skills__line-top"></div>
+								<div class="skills__line-left"></div>
+								<div class="skills__line-right"></div>
+								<div class="skills__line-bottom"></div>
+								<img class="skills__image" src="img/skills/bem.svg" alt="bem" loading="lazy">
+								<div class="skills__text">БЭМ</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="advantages animation">
+				<div class="advantages__container">
+					<div class="advantages__subtitle subtitle">
+						<h4>Подробнее о навыках и преимуществах</h4>
+					</div>
+					<div class="advantages__row-lists">
+						<div class="list">
+							<div class="list__title">
+								<h3><span>HTML5</span>/<span>CSS3</span>/<span>JavaScript</span></h3>
+							</div>
+							<ul class="list__items">
+								<li class="list__item"><span>Чистый и структурированный код.</span></li>
+								<li class="list__item"><span>Валидный, кроссбраузерный код.
+									</span></li>
+								<li class="list__item"><span>Cемантический HTML-код.
+									</span></li>
+								<li class="list__item"><span>Методология БЭМ.</span></li>
+								<li class="list__item"><span>Надёжная вёрстка. Не ломается при замене контента.</span></li>
+								<li class="list__item"><span>Анимация, hover эффекты. Transition.</span></li>
+								<li class="list__item"><span>Чистый JavaScript код.</span></li>
+								<li class="list__item"><span>Flexbox / Grid.</span></li>
+							</ul>
+						</div>
+						<div class="list">
+							<div class="list__title">
+								<h3><span>Адаптив</span>/<span>Оптимизация</span></h3>
+							</div>
+							<ul class="list__items">
+								<li class="list__item"><span>Адаптивная вёрстка под любые устройства.</span></li>
+								<li class="list__item"><span>Отзывчивая вёрстка (резиновая).</span></li>
+								<li class="list__item"><span>Адаптивная вёрстка с брейкпоинтами.</span></li>
+								<li class="list__item"><span>Отзывчиво-адаптивная вёрстка (резиновая с брейкпоинтами).</span></li>
+								<li class="list__item"><span>Конвертирование изображений в современный формат WEBP.</span></li>
+								<li class="list__item"><span>Экспорт SVG-изображений. SVG-спрайты.</span></li>
+								<li class="list__item"><span>Ленивая загрузка данных lazy loading.</span></li>
+							</ul>
+						</div>
+						<div class="list">
+							<div class="list__title">
+								<h3><span>Gulp</span>/<span>SASS</span></h3>
+							</div>
+							<ul class="list__items">
+								<li class="list__item"><span>Стартовый шаблон для быстрого старта и качественной вёрстки.</span></li>
+								<li class="list__item"><span>Автоматизация процесса верстки.</span></li>
+								<li class="list__item"><span>Компиляция препроцессоров.</span></li>
+								<li class="list__item"><span>Минификация файлов.</span></li>
+								<li class="list__item"><span>Более гибкий код.</span></li>
+								<li class="list__item"><span>Улучшенная логика стилей.</span></li>
+								<li class="list__item"><span>Упрощенный синтаксис.</span></li>
+								<li class="list__item"><span>Вложенность селекторов без ошибок.</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="scroll-layout" class="layout">
+				<div class="layout__container">
+					<div class="layout__title title">
+						<h2 class="title__text animation animation-no-hide">Процесс</h2>
+					</div>
+					<div class="layout__cards">
+						<div class="layout__card">
+							<div class="layout__namber">01</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/web_design.svg" alt="web" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Работа с <br> макетом</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Анализирую макет на наличие одинаковых блоков и различных элементов, самого распространенного шрифта и т.д., что бы избежать дублирования кода.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">02</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/communication.svg" alt="communication" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Обсуждение проекта с <br> заказчиком</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Обсудим с Вами все нюансы по Вашему проекту. Так же выслушаю Ваши пожелания и вопросы. Подробно расскажу как я буду выполнять работу.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">03</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/html.svg" alt="html" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Вёрстка <br> контента</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Семантическая вёрстка контента по методологии БЭМ с грамотным названием классов делает код красивым и максимально понятным для любого разработчика.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">04</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/css.svg" alt="css" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Стилизация <br> сайта</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Стилизую блоки и элеметы сайта, добавляю анимацию и различные эффекты. Спомощю чистого JavaScript создаю аккордеоны, меню бургер, попапы, табы и т.д.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">05</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/adaptive.svg" alt="adaptive" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Адаптив <br> сайта</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Адаптирую сайт под все виды устройств. Адаптивная верстка медиа-запросами, отзывчивая вёрстка по бейкпоинтам, отзывчиво адаптивная вёрстка.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">06</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/browsers.svg" alt="browsers" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Проверка в <br> браузерах</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Проверяю адекватное отображение и поведение вёрстки во всех популярных браузерах.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">07</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/error.svg" alt="error" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Устранение <br> ошибок в коде</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Проверяю код на наличие ошибок HTML и CSS. Исправляю если таковые имеются и довожу код до идеала. Также проверяю скорость загрузки сайта.</p>
+								</div>
+							</div>
+						</div>
+						<div class="layout__card">
+							<div class="layout__namber">08</div>
+							<div class="layout__body">
+								<div class="layout__image animation animation-no-hide">
+									<img src="img/layout/ok.svg" alt="ok" loading="lazy">
+								</div>
+								<div class="layout__text-title">
+									<h3>Сборка и сдача <br> проекта</h3>
+								</div>
+								<div class="layout__paragraph">
+									<p>Загружаю вёрстку на хостинг и показываю Вам для оценки. Если не нужно вностить правки, собираю проект в файлы и передаю их Вам.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="scroll-effects" class="effects">
+				<div class="effects__container">
+					<div class="effects__title title">
+						<h2 class="title__text animation animation-no-hide">Эффекты</h2>
+					</div>
+					<div class="effects__subtitle subtitle">
+						<h4>Часто используемые анимации <br> и hover эффекты</h4>
+					</div>
+					<div class="effects__items items-effects">
+						<article class="items-effects__item">
+							<div class="items-effects__title">Анимированный <br> текст</div>
+							<div class="items-effects__text">Animation-text</div>
+						</article>
+						<article class="items-effects__item">
+							<div class="items-effects__title">Анимация при <br> наведении на сылку</div>
+							<div class="items-effects__link">Hover link</div>
+						</article>
+						<article class="items-effects__item">
+							<div class="items-effects__title">Анимация при <br> наведении на кнопку</div>
+							<div class="items-effects-button-text">
+								<span class="items-effects-button-text__text">Click</span>
+								<div class="items-effects-button-text__button">button</div>
+							</div>
+						</article>
+						<article class="items-effects__item">
+							<div class="items-effects__title">Анимированные <br> иконки</div>
+							<svg display="none">
+								<symbol id="items-effects-icon" viewBox="0 0 80 80">
+									<path d="M30.6332 30.4333L39.9998 8.33334L49.3665 30.4333L73.3332 32.4667L55.1332 48.2333L60.5998 71.6667L39.9998 59.2333L19.3998 71.6667L24.8665 48.2333L6.6665 32.4667L30.6332 30.4333ZM43.2332 33.0667L39.9998 25.4333L36.7665 33L35.1998 36.7L31.1998 37.0333L22.9665 37.7333L29.2332 43.1667L32.2665 45.8L31.3665 49.7333L29.4998 57.7667L36.5665 53.5L39.9998 51.4333L43.4332 53.5667L50.4998 57.8333L48.6332 49.8L47.7332 45.8667L50.7665 43.2333L57.0332 37.8L48.7998 37.1L44.7998 36.7667L43.2332 33.0667Z" />
+								</symbol>
+							</svg>
+							<svg class="items-effects-icon-svg-sprite">
+								<use xlink:href="#items-effects-icon"></use>
+							</svg>
+						</article>
+						<article class="items-effects__item">
+							<div class="items-effects__title">Анимация <br> блока</div>
+							<div class="items-effects__block">
+								<img src="img/effects/block.svg" alt="">
+								<img src="img/effects/block.svg" alt="">
+								<img src="img/effects/block.svg" alt="">
+							</div>
+						</article>
+						<article class="items-effects__item">
+							<div class="items-effects__title">Анимация при наведении <br> на изображение</div>
+							<div class="items-effects__image">
+								<picture><source srcset="img/portfolio/bu.webp" type="image/webp"><img src="img/portfolio/bu.jpg" alt="image"></picture>
+								<div class="items-effects__text-image">
+									<div class="items-effects__title-img">HOVER</div>
+									<div class="items-effects__text-img">Hover-effect image</div>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="effects__button">
+						<a href="animation.html" target="_blank" class="look-button">Другие варианты</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="scroll-portfolio" class="portfolio">
+				<div class="portfolio__container">
+					<div class="portfolio__title title">
+						<h2 class="title__text animation animation-no-hide">Портфолио</h2>
+					</div>
+					<!-- Оболочка слайдера -->
+					<div class="portfolio__slider-container">
+						<div class="portfolio__slider swiper">
+							<!-- Двигающееся часть слайдера -->
+							<div class="portfolio__wrapper swiper-wrapper">
+								<!-- Слайд -->
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/rine.webp" type="image/webp"><img src="img/portfolio/rine.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/rine_vr/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/bitcoinist.webp" type="image/webp"><img src="img/portfolio/bitcoinist.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/bitcoinist/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/Sequoia_NFT_park.webp" type="image/webp"><img src="img/portfolio/Sequoia_NFT_park.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/Sequoia-NFT-park/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/vertikal.webp" type="image/webp"><img src="img/portfolio/vertikal.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://vertikal52.ru/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/zone.webp" type="image/webp"><img src="img/portfolio/zone.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/zone/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/auto.webp" type="image/webp"><img src="img/portfolio/auto.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/car_service/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/cutspace.webp" type="image/webp"><img src="img/portfolio/cutspace.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/CutSpase/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/Artificial_Intelligence.webp" type="image/webp"><img src="img/portfolio/Artificial_Intelligence.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/Artificial_Intelligence/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/landing.webp" type="image/webp"><img src="img/portfolio/landing.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/Nootris/" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+								<div class="portfolio__slide swiper-slide">
+									<div class="swiper-slide__border-top"></div>
+									<div class="swiper-slide__border-bottom"></div>
+									<div class="swiper-slide__border-left"></div>
+									<div class="swiper-slide__border-right"></div>
+									<div class="swiper-slide__img">
+										<picture><source srcset="img/portfolio/Rectangle.webp" type="image/webp"><img src="img/portfolio/Rectangle.jpg" alt="image" loading="lazy"></picture>
+										<div class="swiper-lazy-preloader"></div>
+										<a href="https://flame152.github.io/War_for_Love/home.html" target="_blank" class="swiper-slide__look-button look-button">Смотреть</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Если нужна навигация (влево/вправо) -->
+						<button type="button" class="swiper-button-prev-portfolio"></button>
+						<button type="button" class="swiper-button-next-portfolio"></button>
+					</div>
+					<a href="https://vladimir-code.ru/portfolio.html" target="_blank" class="look-button">Все работы</a>
+				</div>
+			</section>
+
+			<section id="scroll-contacts" class="contacts">
+				<div class="contacts__container">
+					<div class="contacts__title title">
+						<h2 class="title__text animation animation-no-hide">Контакты</h2>
+					</div>
+					<div class="contacts__row">
+						<div class="contacts__left">
+							<div class="contacts__name my-name">Владимир</div>
+							<div class="contacts__social social animation">
+								<a href="https://api.whatsapp.com/send/?phone=79506076556&text&type=phone_number&app_absent=0" target="_blank" class="social__item">
+									<img class="social__img" src="img/home/whatsapp.svg" alt="whatsapp" loading="lazy">
+									<div class="social__name">WhatsApp</div>
+								</a>
+								<a href="https://t.me/flame152" target="_blank" class="social__item">
+									<img class="social__img" src="img/home/telegram.svg" alt="telegram" loading="lazy">
+									<div class="social__name">Telegram</div>
+								</a>
+								<a href="https://viber.click/79506076556" target="_blank" class="social__item">
+									<img class="social__img" src="img/home/viber.svg" alt="viber" loading="lazy">
+									<div class="social__name">Viber</div>
+								</a>
+							</div>
+							<a href="https://kwork.ru/user/vladimir-code" target="_blank" class="contacts__button button">
+								Заказать
+								<span class="button__border-top"></span>
+								<span class="button__border-bottom"></span>
+								<span class="button__border-left"></span>
+								<span class="button__border-right"></span>
+							</a>
+						</div>
+						<div class="contacts__right">
+							<a href="https://kwork.ru/user/vladimir-code" target="_blank" class="contacts__kwork">
+								<div class="contacts__line-top"></div>
+								<div class="contacts__line-left"></div>
+								<div class="contacts__line-right"></div>
+								<div class="contacts__line-bottom"></div>
+								<img src="img/contacts/kwork.svg" alt="kwork" loading="lazy">
+							</a>
+							<div class="contacts__profile-photo">
+								<a href="https://kwork.ru/user/vladimir-code" target="_blank" class="contacts__my-photo">
+									<picture><source srcset="img/contacts/profile_photo.webp" type="image/webp"><img src="img/contacts/profile_photo.jpg" alt="profile_photo" loading="lazy"></picture>
+								</a>
+								<a href="https://kwork.ru/user/vladimir-code" target="_blank" class="contacts__reviews my-name"><span>/</span>Владимир</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		</main>
+		<footer class="footer animation">
+			<div class="footer__container">
+				<div class="footer__text"><span class="footer__profession">Frontend developer</span> / <span class="footer__profession">верстальщик сайтов</span></div>
+				<div class="footer__text">Vladimir-Code<span class="footer__copyright">©</span><span class="footer__year">2023</span></div>
+			</div>
+		</footer>
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20230727205711"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js?_v=20230727205711"></script>
+</body>
+
+</html>
